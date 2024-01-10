@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// All Posts
 Route::get('/', function () {
-    return view('welcome');
+    return view('posts', [
+        'heading' => 'Latest Posts',
+        'posts' => Post::all()
+    ]);
+});
+
+//Single Post
+Route::get('/posts/{id}', function($id){
+    return view('post', [
+        'post' => Post::find($id)
+    ]);
 });
