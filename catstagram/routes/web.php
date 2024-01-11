@@ -18,5 +18,12 @@ use App\Models\Post;
 // All Posts
 Route::get('/', [PostController::class, 'index']);
 
+//Show Create Form
+Route::get('/posts/create', [PostController::class, 'create']);
+
+//Single Listing Data
+Route::post('/posts', [PostController::class, 'store']);
+
+
 //Single Post
 Route::get('/posts/{post}', [PostController::class, 'show']);
