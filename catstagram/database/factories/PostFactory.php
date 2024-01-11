@@ -22,6 +22,7 @@ class PostFactory extends Factory
             'location' => $this->faker->company(),
             'breed' => $this->faker->word(),
             'description' => $this->faker->paragraph(2),
+            'likes' => 0,
         ];
     }
 }

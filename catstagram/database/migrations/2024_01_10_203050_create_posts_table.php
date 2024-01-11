@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('breed');
             $table->longText('description');
+            $table->integer('likes');
             $table->timestamps();
         });
     }
