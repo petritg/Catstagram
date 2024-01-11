@@ -30,7 +30,16 @@ class PostController extends Controller
 
     //Store Post Data
     public function store(Request $request) {
-        dd($request->all());
+        $formFields = $request->validate([
+            'title' => 'required',
+            'location' => 'required', 
+            'breed' => 'required',
+            'tags' => 'required',
+            'description',
+
+        ]);
+
+        return redirect('/');
     }
 
 }

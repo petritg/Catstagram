@@ -3,90 +3,60 @@
                 >
                     <header class="text-center">
                         <h2 class="text-2xl font-bold uppercase mb-1">
-                            Create a Gig
+                            Maak een post
                         </h2>
-                        <p class="mb-4">Post a gig to find a developer</p>
+                        <p class="mb-4">Post een kattenfoto en geef de mensen meer kleur in hun leven!</p>
                     </header>
 
                     <form method="POST" action="/posts">
                         @csrf
                         <div class="mb-6">
-                            <label
-                                for="company"
-                                class="inline-block text-lg mb-2"
-                                >Company Name</label
-                            >
-                            <input
-                                type="text"
-                                class="border border-gray-200 rounded p-2 w-full"
-                                name="company"
-                            />
-                        </div>
-
-                        <div class="mb-6">
                             <label for="title" class="inline-block text-lg mb-2"
-                                >Job Title</label
+                                >Titel</label
                             >
                             <input
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="title"
-                                placeholder="Example: Senior Laravel Developer"
+                                placeholder="Geen te lange titel aub..."
                             />
+                            @error('title')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
                         </div>
 
                         <div class="mb-6">
                             <label
                                 for="location"
                                 class="inline-block text-lg mb-2"
-                                >Job Location</label
+                                >Locatie</label
                             >
                             <input
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="location"
-                                placeholder="Example: Remote, Boston MA, etc"
+                                placeholder="Voorbeeld: Brussel, België"
                             />
+                            @error('location')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
                         </div>
-
-                        <div class="mb-6">
-                            <label for="email" class="inline-block text-lg mb-2"
-                                >Contact Email</label
-                            >
-                            <input
-                                type="text"
-                                class="border border-gray-200 rounded p-2 w-full"
-                                name="email"
-                            />
-                        </div>
-
-                        <div class="mb-6">
-                            <label
-                                for="website"
-                                class="inline-block text-lg mb-2"
-                            >
-                                Website/Application URL
-                            </label>
-                            <input
-                                type="text"
-                                class="border border-gray-200 rounded p-2 w-full"
-                                name="website"
-                            />
-                        </div>
-
                         <div class="mb-6">
                             <label for="tags" class="inline-block text-lg mb-2">
-                                Tags (Comma Separated)
+                                Tags (Gescheiden door komma's)
                             </label>
                             <input
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="tags"
-                                placeholder="Example: Laravel, Backend, Postgres, etc"
+                                placeholder="Voorbeeld: schattig, natuur, zomer"
                             />
+                            @error('tags')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
                         </div>
 
-                        <div class="mb-6">
+                        {{-- <div class="mb-6">
                             <label for="logo" class="inline-block text-lg mb-2">
                                 Company Logo
                             </label>
@@ -95,31 +65,34 @@
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="logo"
                             />
-                        </div>
+                        </div> --}}
 
                         <div class="mb-6">
                             <label
                                 for="description"
                                 class="inline-block text-lg mb-2"
                             >
-                                Job Description
+                                Beschrijving
                             </label>
                             <textarea
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="description"
                                 rows="10"
-                                placeholder="Include tasks, requirements, salary, etc"
+                                placeholder="Meer details over de foto. Leef je uit!"
                             ></textarea>
+                            @error('description')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
                         </div>
 
                         <div class="mb-6">
                             <button
                                 class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
                             >
-                                Create Gig
+                                Maak Post
                             </button>
 
-                            <a href="/" class="text-black ml-4"> Back </a>
+                            <a href="/" class="text-black ml-4"> Terug </a>
                         </div>
                     </form>
                 </x-card>
