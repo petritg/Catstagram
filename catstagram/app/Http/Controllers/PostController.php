@@ -35,9 +35,14 @@ class PostController extends Controller
             'location' => 'required', 
             'breed' => 'required',
             'tags' => 'required',
-            'description',
+            'description' => 'required',
+            
 
         ]);
+
+        $formFields['likes'] = 0;
+
+        Post::create($formFields);
 
         return redirect('/');
     }
