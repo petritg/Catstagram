@@ -9,7 +9,8 @@
                     >
                         <img
                             class="w-48 mr-6 mb-6"
-                            src="{{asset('images/no-image.png')}}"
+                            src="{{$post->photo ? asset('storage/' . $post->photo)
+                            : asset('/images/no-image.png')}}"
                             alt=""
                         />
 

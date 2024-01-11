@@ -40,6 +40,10 @@ class PostController extends Controller
             
 
         ]);
+        
+        if($request->hasFile('photo')) {
+            $formFields['photo'] = $request->file('photo')->store('photos', 'public');
+        }
 
         $formFields['likes'] = 0;
 

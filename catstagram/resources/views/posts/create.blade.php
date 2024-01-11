@@ -8,7 +8,7 @@
                         <p class="mb-4">Post een kattenfoto en geef de mensen meer kleur in hun leven!</p>
                     </header>
 
-                    <form method="POST" action="/posts">
+                    <form method="POST" action="/posts" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-6">
                             <label for="title" class="inline-block text-lg mb-2"
@@ -74,16 +74,19 @@
                             @enderror
                         </div>
 
-                        {{-- <div class="mb-6">
+                        <div class="mb-6">
                             <label for="logo" class="inline-block text-lg mb-2">
-                                Company Logo
+                                Foto
                             </label>
                             <input
                                 type="file"
                                 class="border border-gray-200 rounded p-2 w-full"
-                                name="logo"
+                                name="photo"
                             />
-                        </div> --}}
+                            @error('photo')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
 
                         <div class="mb-6">
                             <label
