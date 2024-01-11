@@ -50,7 +50,37 @@ class PostController extends Controller
         Post::create($formFields);
 
 
-        return redirect('/')->with('message', 'Listing created successfully');
+        return redirect('/')->with('message', 'Post gepubliceerd!');
+    }
+
+    //Show Edit Form
+    public function edit (Post $post) {
+        
+        return view('posts.edit', ['post' => $post]);
+    }
+
+    //Update Post Data
+    public function update(Request $request, Post $post) {
+        $formFields = $request->validate([
+            'title' => 'required',
+            'location' => 'required', 
+            'breed' => 'required',
+            'tags' => 'required',
+            'description' => 'required',
+            
+
+        ]);
+        
+        if($request->hasFile('photo')) {
+            $formFields['photo'] = $request->file('photo')->store('photos', 'public');
+        }
+
+        $formFields['likes'] = 0;
+
+        $post->update($formFields);
+
+
+        return back()->with('message', 'Post geüpdatet!');
     }
 
 }

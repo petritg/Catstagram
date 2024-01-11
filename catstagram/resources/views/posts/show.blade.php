@@ -38,5 +38,12 @@
                         </div>
                     </div>
                 </x-card>
+                <x-card class="mt-4 p-2 flex space-x-6">
+                    <a href="/posts/{{$post->id}}/edit">
+                    <i class="fa-solid fa-pencil"></i>
+                    Bewerk
+                    </a>
+
+                </x-card>
             </div>
 </x-layout>

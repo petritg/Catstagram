@@ -21,9 +21,14 @@ Route::get('/', [PostController::class, 'index']);
 //Show Create Form
 Route::get('/posts/create', [PostController::class, 'create']);
 
-//Single Listing Data
+//Single Post Data
 Route::post('/posts', [PostController::class, 'store']);
 
+//Show Edit Form
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+
+//Update Post
+Route::put('/posts/{post}', [PostController::class, 'update']);
 
 //Single Post
 Route::get('/posts/{post}', [PostController::class, 'show']);
