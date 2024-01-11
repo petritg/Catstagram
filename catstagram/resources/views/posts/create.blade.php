@@ -19,6 +19,7 @@
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="title"
                                 placeholder="Geen te lange titel aub..."
+                                value="{{old('title')}}"
                             />
                             @error('title')
                                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -33,6 +34,7 @@
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="breed"
+                                value="{{old('breed')}}"
                             />
                             @error('breed')
                                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -50,6 +52,7 @@
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="location"
                                 placeholder="Voorbeeld: Brussel, België"
+                                value="{{old('location')}}"
                             />
                             @error('location')
                                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -64,6 +67,7 @@
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="tags"
                                 placeholder="Voorbeeld: schattig, natuur, zomer"
+                                value="{{old('tags')}}"
                             />
                             @error('tags')
                                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -93,7 +97,8 @@
                                 name="description"
                                 rows="10"
                                 placeholder="Meer details over de foto. Leef je uit!"
-                            ></textarea>
+                                
+                            >{{old('description')}}</textarea>
                             @error('description')
                                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                             @enderror

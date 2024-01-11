@@ -16,4 +16,8 @@
 @endunless
 
 </div>
+
+<div class="mt-6 p-4">
+    {{$posts->links()}}
+</div>
 </x-layout>
