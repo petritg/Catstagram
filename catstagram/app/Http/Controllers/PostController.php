@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Session\Session;
 
 class PostController extends Controller
 {
@@ -44,7 +45,8 @@ class PostController extends Controller
 
         Post::create($formFields);
 
-        return redirect('/');
+
+        return redirect('/')->with('message', 'Listing created successfully');
     }
 
 }
