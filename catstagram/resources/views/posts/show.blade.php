@@ -44,6 +44,12 @@
                     Bewerk
                     </a>
 
+                    <form method="POST" action="/posts/{{$post->id}}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="text-red-500"><i class="fa-solid fa-solid fa-trash"></i>Verwijder
+                        </button>
+                    </form>
                 </x-card>
             </div>
 </x-layout>
