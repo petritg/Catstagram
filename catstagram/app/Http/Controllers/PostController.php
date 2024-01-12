@@ -63,6 +63,12 @@ class PostController extends Controller
 
     //Update Post Data
     public function update(Request $request, Post $post) {
+
+        // Make sure logged in user is owner
+        if($post->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
         $formFields = $request->validate([
             'title' => 'required',
             'location' => 'required', 
@@ -87,6 +93,12 @@ class PostController extends Controller
 
     // Delete Post
     public function destroy(Post $post) {
+        
+        // Make sure logged in user is owner
+        if($post->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
         $post->delete();
         return redirect('/')->with ('message', 'Post verwijderd!');
     }
