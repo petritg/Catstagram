@@ -34,6 +34,21 @@
                     ><img class="w-24" src="{{ asset('images/logo.png')}}" alt="" class="logo"
                 /></a>
                 <ul class="flex space-x-6 mr-6 text-lg">
+                    @auth
+                        
+                    
+                    <li>
+                        <span class="font-bold uppercase">
+                            Welkom {{auth()->user()->name}}
+                        </span>
+                    </li>
+                    <li>
+                        <a href="/posts/manage" class="hover:text-laravel"
+                            ><i class="fa-solid fa-gear"></i>
+                            Beheer Posts</a
+                        >
+                    </li>
+                    @else
                     <li>
                         <a href="/register" class="hover:text-laravel"
                             ><i class="fa-solid fa-user-plus"></i> Registreer</a
@@ -45,6 +60,7 @@
                             Login</a
                         >
                     </li>
+                    @endauth
                 </ul>
             </nav>
             <main>
