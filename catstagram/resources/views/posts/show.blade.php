@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </x-card>
-                <x-card class="mt-4 p-2 flex space-x-6">
+                {{-- <x-card class="mt-4 p-2 flex space-x-6">
                     <a href="/posts/{{$post->id}}/edit">
                     <i class="fa-solid fa-pencil"></i>
                     Bewerk
@@ -50,6 +50,6 @@
                         <button class="text-red-500"><i class="fa-solid fa-solid fa-trash"></i>Verwijder
                         </button>
                     </form>
-                </x-card>
+                </x-card> --}}
             </div>
 </x-layout>
