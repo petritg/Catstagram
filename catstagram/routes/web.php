@@ -19,6 +19,9 @@ use App\Http\Controllers\UserController;
 // All Posts
 Route::get('/', [PostController::class, 'index']);
 
+// About page
+Route::get('/about', [PostController::class, 'about']);
+
 //Show Create Form
 Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth');
 

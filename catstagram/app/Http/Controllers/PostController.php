@@ -17,6 +17,11 @@ class PostController extends Controller
         ]);
     }
 
+    //Show about page
+    public function about() {
+        return view('about');
+    }
+
     //Show single listing
     public function show(Post $post) {
         return view('posts/show', [
@@ -93,7 +98,7 @@ class PostController extends Controller
 
     // Delete Post
     public function destroy(Post $post) {
-        
+
         // Make sure logged in user is owner
         if($post->user_id != auth()->id()) {
             abort(403, 'Unauthorized Action');
