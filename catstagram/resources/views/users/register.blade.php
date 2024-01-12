@@ -7,11 +7,11 @@
                         <p class="mb-4">Create an account to post gigs</p>
                     </header>
 
-                    <form method="POST" action="/users">
+                    <form method="POST" action="/users" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-6">
                             <label for="name" class="inline-block text-lg mb-2">
-                                Name
+                                Naam
                             </label>
                             <input
                                 type="text"
@@ -20,6 +20,53 @@
                                 value="{{old('name')}}"
                             />
                             @error('name')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="name" class="inline-block text-lg mb-2">
+                                Verjaardag
+                            </label>
+                            <input
+                                type="date"
+                                class="border border-gray-200 rounded p-2 w-full"
+                                name="birthday"
+                                value="{{old('birthday')}}"
+                            />
+                            @error('birthday')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-6">
+                            <label
+                                for="aboutme"
+                                class="inline-block text-lg mb-2"
+                            >
+                                Over jou:
+                            </label>
+                            <textarea
+                                class="border border-gray-200 rounded p-2 w-full"
+                                name="aboutme"
+                                rows="10"
+                                
+                            >{{old('aboutme')}}</textarea>
+                            @error('aboutme')
+                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="avatar" class="inline-block text-lg mb-2">
+                                Je Avatar
+                            </label>
+                            <input
+                                type="file"
+                                class="border border-gray-200 rounded p-2 w-full"
+                                name="avatar"
+                            />
+                            @error('avatar')
                                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                             @enderror
                         </div>
@@ -44,7 +91,7 @@
                                 for="password"
                                 class="inline-block text-lg mb-2"
                             >
-                                Password
+                                Wachtwoord
                             </label>
                             <input
                                 type="password"
@@ -62,7 +109,7 @@
                                 for="password2"
                                 class="inline-block text-lg mb-2"
                             >
-                                Confirm Password
+                                Herhaal Wachtwoord
                             </label>
                             <input
                                 type="password"
@@ -80,13 +127,13 @@
                                 type="submit"
                                 class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
                             >
-                                Sign Up
+                                Registreer
                             </button>
                         </div>
 
                         <div class="mt-8">
                             <p>
-                                Already have an account?
+                                Heb je al een account?
                                 <a href="/login" class="text-laravel"
                                     >Login</a
                                 >

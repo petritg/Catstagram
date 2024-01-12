@@ -18,9 +18,15 @@ class UserController extends Controller
     public function store(Request $request) {
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
+            'birthday' => ['required'],
+            'aboutme' => ['required'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6'
         ]);
+
+        if($request->hasFile('avatar')) {
+            $formFields['avatar'] = $request->file('avatar')->store('avatars', 'public');
+        }
 
         // Hash Password
         $formFields['password'] = bcrypt($formFields['password']);
