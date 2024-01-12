@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
             'user_id' => $user->id
         ]);
 
+        $this->call(RoleSeeder::class);
+        $this->call(AdminSeeder::class);
+
         // Post::create([
         //     'title' => 'Schattige Kat',
         //     'tags' => 'schattig, kitten, grijs',
