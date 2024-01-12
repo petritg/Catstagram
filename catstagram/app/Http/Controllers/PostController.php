@@ -47,6 +47,8 @@ class PostController extends Controller
 
         $formFields['likes'] = 0;
 
+        $formFields['user_id'] = auth()->id();
+
         Post::create($formFields);
 
 
