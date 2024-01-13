@@ -38,7 +38,7 @@
                     
                     <li>
                         <span class="font-bold uppercase">
-                            Welkom {{auth()->user()->name}}
+                            <a href="{{ route('profile') }}">Welkom {{auth()->user()->name}}</a>
                         </span>
                     </li>
                     <li>

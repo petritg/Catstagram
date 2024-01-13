@@ -22,9 +22,9 @@ class PostController extends Controller
         return view('about');
     }
 
-    //Show single listing
+    //Show single post
     public function show(Post $post) {
-        return view('posts/show', [
+        return view('posts.show', [
             'post' => $post
         ]);
     }

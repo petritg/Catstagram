@@ -6,12 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     // Show Register/Create Form
     public function create() {
         return view('users.register');
+    }
+
+    //Show user
+    public function showProfile() {
+        $user = Auth::user();
+    
+        return view('users.showprofile', [
+            'user' => $user
+        ]);
     }
 
     // Create New User

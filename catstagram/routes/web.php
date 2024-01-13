@@ -59,6 +59,9 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 // Log In User
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
+// Show User
+Route::get('/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('profile');
+
 // Route::get('admin', function () {
 //     return view('admin.index');
 // })->middleware(['auth', 'role:admin'])->name('admin');
