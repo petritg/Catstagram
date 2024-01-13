@@ -62,6 +62,9 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 // Show User
 Route::get('/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('profile');
 
+//Update user
+Route::put('/profile', [UserController::class, 'updateProfile'])->middleware('auth')->name('editprofile');
+
 // Route::get('admin', function () {
 //     return view('admin.index');
 // })->middleware(['auth', 'role:admin'])->name('admin');

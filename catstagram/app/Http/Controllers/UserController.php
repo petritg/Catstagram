@@ -80,4 +80,33 @@ class UserController extends Controller
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
+
+    public function updateProfile(Request $request, User $user) {
+        // dd($user->id, auth()->id());
+        // Make sure logged in user is owner
+        if($user->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
+        $formFields = $request->validate([
+            'name' => ['required', 'min:3'],
+            'birthday' => ['required'],
+            'aboutme' => ['required'],
+            'email' => ['required'],
+            'password' => 'required|confirmed|min:6'
+            
+        ]);
+        
+        if($request->hasFile('avatar')) {
+            $formFields['avatar'] = $request->file('avatar')->store('avatars', 'public');
+        }
+
+        // Hash Password
+        $formFields['password'] = bcrypt($formFields['password']);
+
+        $user->update($formFields);
+
+
+        return redirect('/')->with('message', 'Gegevens bijgewerkt!');
+    }
 }
