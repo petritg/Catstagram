@@ -60,7 +60,7 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // Show User
-Route::get('/profile', [UserController::class, 'showProfile'])->middleware('auth')->name('profile');
+Route::get('/users/showprofile', [UserController::class, 'showProfile'])->middleware('auth')->name('profile');
 
 //Update user
 Route::put('/profile', [UserController::class, 'updateProfile'])->middleware('auth')->name('editprofile');

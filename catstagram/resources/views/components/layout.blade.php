@@ -38,7 +38,7 @@
                     
                     <li>
                         <span class="font-bold uppercase">
-                            <a href="{{ route('profile') }}">Welkom {{auth()->user()->name}}</a>
+                            <a href="/users/showprofile">Welkom {{auth()->user()->name}}</a>
                         </span>
                     </li>
                     <li>
