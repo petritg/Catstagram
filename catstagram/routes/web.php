@@ -67,7 +67,7 @@ Route::get('/users/showprofile', [UserController::class, 'showProfile'])->middle
 Route::put('/profile', [UserController::class, 'updateProfile'])->middleware('auth')->name('editprofile');
 
 //Show news
-Route::get('/', [NewsController::class, 'showNews'])->name('shownews')->middleware('guest');
+Route::get('/news/show', [NewsController::class, 'showNews'])->name('shownews')->middleware('guest');
 
 // Route::get('admin', function () {
 //     return view('admin.index');
