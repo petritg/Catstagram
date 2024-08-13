@@ -7,7 +7,7 @@
             <p class="mb-4">Pas je account gegevens aan</p>
         </header>
 
-        <form method="POST" action="{{ route('editprofile')}}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('editprofile') }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-6">
@@ -134,9 +134,8 @@
                     class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
                 >
                     Bewerk
-                </button>
+                </button> 
             </div>
-
         </form>
 </x-card>
     </x-layout>

@@ -7,6 +7,7 @@ use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -81,32 +82,42 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
 
-    public function updateProfile(Request $request, User $user) {
-        // dd($user->id, auth()->id());
-        // Make sure logged in user is owner
-        if($user->user_id != auth()->id()) {
-            abort(403, 'Unauthorized Action');
-        }
-
+    public function updateProfile(Request $request) {
+        // Retrieve the currently authenticated user
+        $user = auth()->user();
+    
+        // Validate the incoming request data
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
-            'birthday' => ['required'],
+            'birthday' => ['required', 'date'],
             'aboutme' => ['required'],
-            'email' => ['required'],
-            'password' => 'required|confirmed|min:6'
-            
+            'email' => ['required', 'email'],
         ]);
-        
-        if($request->hasFile('avatar')) {
+    
+        // Check if the user has provided a new password
+        if ($request->filled('password')) {
+            // Validate and hash the new password
+            $passwordValidation = $request->validate([
+                'password' => 'confirmed|min:6',
+            ]);
+            $formFields['password'] = bcrypt($passwordValidation['password']);
+        }
+    
+        // Check if the user has uploaded a new avatar
+        if ($request->hasFile('avatar')) {
+            // Delete the old avatar if it exists
+            if ($user->avatar && Storage::exists('public/' . $user->avatar)) {
+                Storage::delete('public/' . $user->avatar);
+            }
+    
+            // Store the new avatar and update the form fields with its path
             $formFields['avatar'] = $request->file('avatar')->store('avatars', 'public');
         }
-
-        // Hash Password
-        $formFields['password'] = bcrypt($formFields['password']);
-
+    
+        // Update the user's profile with the validated form fields
         $user->update($formFields);
-
-
+    
+        // Redirect the user back to the homepage with a success message
         return redirect('/')->with('message', 'Gegevens bijgewerkt!');
     }
 }
