@@ -11,7 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('newslistings', function (Blueprint $table) {
+            $table->id();
+            $table->string('coverimage');
+            $table->longText('content');
+            $table->date('publishing_date');
+            
+        });
     }
 
     /**
@@ -19,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('newslistings');
     }
 };

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NewsController;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +65,9 @@ Route::get('/users/showprofile', [UserController::class, 'showProfile'])->middle
 
 //Update user
 Route::put('/profile', [UserController::class, 'updateProfile'])->middleware('auth')->name('editprofile');
+
+//Show news
+Route::get('/', [NewsController::class, 'showNews'])->name('shownews')->middleware('guest');
 
 // Route::get('admin', function () {
 //     return view('admin.index');
