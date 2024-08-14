@@ -63,11 +63,14 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 // Show User
 Route::get('/users/showprofile', [UserController::class, 'showProfile'])->middleware('auth')->name('profile');
 
-//Update user
+// Update user
 Route::put('/profile', [UserController::class, 'updateProfile'])->middleware('auth')->name('editprofile');
 
-//Show news
-Route::get('/news/show', [NewsController::class, 'showNews'])->name('shownews')->middleware('guest');
+// Show news
+Route::get('/news/show', [NewsController::class, 'showNews'])->name('shownews');
+
+// Create newslisting
+Route::post('news/create', [NewsController::class, 'createNews'])->name('createnews');
 
 // Route::get('admin', function () {
 //     return view('admin.index');
