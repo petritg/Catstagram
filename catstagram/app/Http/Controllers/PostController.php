@@ -12,6 +12,7 @@ class PostController extends Controller
     //Show all listings
     public function index() {
         
+    
         return view('posts.index', [
             'posts' => Post::latest()->filter(request(['tag', 'search']))->paginate(6)
         ]);
