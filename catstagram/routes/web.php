@@ -66,17 +66,8 @@ Route::get('/users/showprofile', [UserController::class, 'showProfile'])->middle
 // Update user
 Route::put('/profile', [UserController::class, 'updateProfile'])->middleware('auth')->name('editprofile');
 
-// Show news
-Route::get('/news/show', [NewsController::class, 'showNews'])->name('shownews');
-
-// Create newslisting
-Route::post('/news/create', [NewsController::class, 'createNews'])->name('createnews');//admin middleware
-
-// Edit newslisting
-Route::put('/news/{listing}/edit', [NewsController::class, 'editNews'])->name('editnews');//admin middleware
-
-// Delete newslisting
-Route::delete('/news/{listing}', [NewsController::class, 'deleteNews'])->name('deletenews');//admin middleware
+// All news routes
+Route::resource('news', NewsController::class);
 
 // Route::get('admin', function () {
 //     return view('admin.index');
