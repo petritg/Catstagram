@@ -15,4 +15,8 @@ class News extends Model
         'cover_image',
         'publish_date',
     ];
+
+    protected $casts = [
+        'publish_date' => 'datetime',
+    ];
 } 

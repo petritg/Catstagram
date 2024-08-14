@@ -7,7 +7,7 @@
                             </h2>
                         </header>
     
-                        <form method="POST" action="/posts" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('news.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-6">
                                 <label for="title" class="inline-block text-lg mb-2"
@@ -17,7 +17,6 @@
                                     type="text"
                                     class="border border-gray-200 rounded p-2 w-full"
                                     name="title"
-                                    placeholder="Geen te lange titel aub..."
                                     value="{{old('title')}}"
                                 />
                                 @error('title')
@@ -26,83 +25,43 @@
                             </div>
     
                             <div class="mb-6">
-                                <label for="title" class="inline-block text-lg mb-2"
-                                    >Kattenras</label
-                                >
+                                <label for="publish_date" class="inline-block text-lg mb-2">Publicatiedatum</label>
                                 <input
-                                    type="text"
+                                    type="date"
                                     class="border border-gray-200 rounded p-2 w-full"
-                                    name="breed"
-                                    value="{{old('breed')}}"
+                                    name="publish_date"
+                                    value="{{ old('publish_date') }}"
                                 />
-                                @error('breed')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @error('publish_date')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
     
-                            <div class="mb-6">
-                                <label
-                                    for="location"
-                                    class="inline-block text-lg mb-2"
-                                    >Locatie</label
-                                >
-                                <input
-                                    type="text"
-                                    class="border border-gray-200 rounded p-2 w-full"
-                                    name="location"
-                                    placeholder="Voorbeeld: Brussel, België"
-                                    value="{{old('location')}}"
-                                />
-                                @error('location')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                                @enderror
-                            </div>
-                            <div class="mb-6">
-                                <label for="tags" class="inline-block text-lg mb-2">
-                                    Tags (Gescheiden door komma's)
-                                </label>
-                                <input
-                                    type="text"
-                                    class="border border-gray-200 rounded p-2 w-full"
-                                    name="tags"
-                                    placeholder="Voorbeeld: schattig, natuur, zomer"
-                                    value="{{old('tags')}}"
-                                />
-                                @error('tags')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                                @enderror
-                            </div>
     
                             <div class="mb-6">
-                                <label for="logo" class="inline-block text-lg mb-2">
+                                <label for="cover_image" class="inline-block text-lg mb-2">
                                     Foto
                                 </label>
                                 <input
                                     type="file"
                                     class="border border-gray-200 rounded p-2 w-full"
-                                    name="photo"
+                                    name="cover_image"
                                 />
-                                @error('photo')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                @error('cover_image')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
     
                             <div class="mb-6">
-                                <label
-                                    for="description"
-                                    class="inline-block text-lg mb-2"
-                                >
-                                    Beschrijving
-                                </label>
+                                <label for="content" class="inline-block text-lg mb-2">Inhoud</label>
                                 <textarea
                                     class="border border-gray-200 rounded p-2 w-full"
-                                    name="description"
+                                    name="content"
                                     rows="10"
-                                    placeholder="Meer details over de foto. Leef je uit!"
-                                    
-                                >{{old('description')}}</textarea>
-                                @error('description')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                    placeholder="Inhoud van het nieuwsbericht..."
+                                >{{ old('content') }}</textarea>
+                                @error('content')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
     
@@ -110,10 +69,10 @@
                                 <button
                                     class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
                                 >
-                                    Maak Post
+                                    Maak Nieuwsbericht
                                 </button>
     
-                                <a href="/" class="text-black ml-4"> Terug </a>
+                                <a href="{{ route('news.index') }}" class="text-black ml-4"> Terug </a>
                             </div>
                         </form>
                     </x-card>
