@@ -70,7 +70,13 @@ Route::put('/profile', [UserController::class, 'updateProfile'])->middleware('au
 Route::get('/news/show', [NewsController::class, 'showNews'])->name('shownews');
 
 // Create newslisting
-Route::post('news/create', [NewsController::class, 'createNews'])->name('createnews');
+Route::post('/news/create', [NewsController::class, 'createNews'])->name('createnews');//admin middleware
+
+// Edit newslisting
+Route::put('/news/{listing}/edit', [NewsController::class, 'editNews'])->name('editnews');//admin middleware
+
+// Delete newslisting
+Route::delete('/news/{listing}', [NewsController::class, 'deleteNews'])->name('deletenews');//admin middleware
 
 // Route::get('admin', function () {
 //     return view('admin.index');
