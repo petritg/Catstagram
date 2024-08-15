@@ -1,11 +1,47 @@
-@extends('layouts.app')
+<x-layout>
+    <a href="{{ route('news.index') }}" class="inline-block text-black ml-4 mb-4"
+    ><i class="fa-solid fa-arrow-left"></i> Ga Terug
+    </a>
+    <div class="mx-4">
+        <x-card>
+            <div
+                class="flex flex-col items-center justify-center text-center"
+            >
+                <img
+                    class="w-full md:w-3/4 lg:w-2/3 mr-6 mb-6"
+                    src="{{$news->cover_image ? asset('storage/' . $news->cover_image)
+                    : asset('/images/no-image.png')}}"
+                    alt=""
+                />
 
-@section('content')
-    <h1>{{ $news->title }}</h1>
-    <p>{{ $news->content }}</p>
-    @if ($news->cover_image)
-        <img src="{{ asset('storage/' . $news->cover_image) }}" alt="Cover Image" style="max-width: 500px;">
-    @endif
-    <p><strong>Published on:</strong> {{ $news->publish_date->format('d M Y') }}</p>
-    <a href="{{ route('news.index') }}" class="btn btn-secondary">Back to News</a>
-@endsection
+                <h3 class="text-2xl mb-2">{{$news->title}}</h3>
+                <div class="text-xl font-bold mb-4">Published on {{ $news->publish_date->format('M d, Y') }}</div>
+                
+                
+                <div class="border border-gray-200 w-full mb-6"></div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-4">
+                        Content
+                    </h3>
+                    <div class="text-lg space-y-6">
+                        {{$news->content}}
+                    </div>
+                </div>
+            </div>
+        </x-card>
+        {{-- <x-card class="mt-4 p-2 flex space-x-6">
+            <a href="/posts/{{$post->id}}/edit">
+            <i class="fa-solid fa-pencil"></i>
+            Bewerk
+            </a>
+
+            <form method="POST" action="/posts/{{$post->id}}">
+                @csrf
+                @method('DELETE')
+                <button class="text-red-500"><i class="fa-solid fa-solid fa-trash"></i>Verwijder
+                </button>
+            </form>
+        </x-card> --}}
+    </div>
+
+</x-layout>
