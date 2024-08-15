@@ -20,28 +20,28 @@
                 
                 <div class="border border-gray-200 w-full mb-6"></div>
                 <div>
-                    <h3 class="text-3xl font-bold mb-4">
+                    {{-- <h3 class="text-3xl font-bold mb-4">
                         Content
-                    </h3>
+                    </h3> --}}
                     <div class="text-lg space-y-6">
                         {{$news->content}}
                     </div>
                 </div>
             </div>
         </x-card>
-        {{-- <x-card class="mt-4 p-2 flex space-x-6">
-            <a href="/posts/{{$post->id}}/edit">
+        <x-card class="mt-4 p-2 flex space-x-6">
+            <a href="{{ route('news.edit', $news->id) }}">
             <i class="fa-solid fa-pencil"></i>
             Bewerk
             </a>
 
-            <form method="POST" action="/posts/{{$post->id}}">
+           <form method="POST" action="{{ route('news.destroy', $news->id) }}">
                 @csrf
                 @method('DELETE')
                 <button class="text-red-500"><i class="fa-solid fa-solid fa-trash"></i>Verwijder
                 </button>
             </form>
-        </x-card> --}}
+        </x-card> 
     </div>
 
 </x-layout>
