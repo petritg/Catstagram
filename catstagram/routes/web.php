@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\NewsController;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -68,6 +69,9 @@ Route::put('/profile', [UserController::class, 'updateProfile'])->middleware('au
 
 // All news routes
 Route::resource('news', NewsController::class);
+
+// All FAQ routes
+Route::resource('faqs', FAQController::class);
 
 // Route::get('admin', function () {
 //     return view('admin.index');

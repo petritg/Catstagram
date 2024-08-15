@@ -2,5 +2,4 @@
 Backend Web - Laravel Project
 
 TODO:
-    - kijken hoe listen van newsitems
-    - 
+    verder gaan met views FAQ
