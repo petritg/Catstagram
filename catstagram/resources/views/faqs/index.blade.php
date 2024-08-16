@@ -1,4 +1,7 @@
 <x-layout>
+    @include('partials._hero')
+
+    
     <h1 class="text-2xl font-bold mb-4">FAQs</h1>
 
     <a href="{{ route('faqs.create') }}" class="text-blue-500 hover:underline">Create New FAQ</a>
