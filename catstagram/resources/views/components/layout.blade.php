@@ -83,7 +83,7 @@
             class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center"
         >
             <a href="/about" class="ml-2 hover:underline">About</a>
-            <a href="/" class="ml-2 hover:underline">FAQ</a>
+            <a href="{{ route('faqs.index') }}" class="ml-2 hover:underline">FAQ</a>
 
             <a
                 href="/posts/create"

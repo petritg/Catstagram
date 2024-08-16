@@ -1,5 +1,5 @@
 <x-layout>
-    <h1 class="text-2xl font-bold mb-4">FAQ Management</h1>
+    <h1 class="text-2xl font-bold mb-4">FAQs</h1>
 
     <a href="{{ route('faqs.create') }}" class="text-blue-500 hover:underline">Create New FAQ</a>
 
@@ -12,6 +12,7 @@
             <li class="mb-4">
                 <h2 class="text-xl font-semibold">{{ $faq->question }}</h2>
                 <p>{{ $faq->answer }}</p>
+                <p><strong>Category:</strong> {{ $faq->category->name }}</p>
                 <a href="{{ route('faqs.edit', $faq->id) }}" class="text-blue-500 hover:underline">Edit</a>
                 <form action="{{ route('faqs.destroy', $faq->id) }}" method="POST" class="inline">
                     @csrf

@@ -20,6 +20,18 @@
             @enderror
         </div>
 
+        <div class="mb-4">
+            <label for="category_id" class="block text-lg mb-2">Category</label>
+            <select name="category_id" id="category_id" class="border border-gray-300 p-2 w-full" required>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" {{ $faq->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                @endforeach
+            </select>
+            @error('category_id')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+
         <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Update FAQ</button>
     </form>
 </x-layout>

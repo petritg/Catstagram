@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,6 +73,7 @@ Route::resource('news', NewsController::class);
 
 // All FAQ routes
 Route::resource('faqs', FAQController::class);
+Route::resource('categories', CategoryController::class);
 
 // Route::get('admin', function () {
 //     return view('admin.index');
