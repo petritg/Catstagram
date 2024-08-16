@@ -1,28 +1,21 @@
 <x-layout>
     @include('partials._hero')
 
-    
-    <h1 class="text-2xl font-bold mb-4">FAQs</h1>
+    <div class="flex justify-center mb-4">
+        <h1 class="text-2xl font-bold text-center">FAQs</h1>
+    </div>
 
-    <a href="{{ route('faqs.create') }}" class="text-blue-500 hover:underline">Create New FAQ</a>
+    <a href="{{ route('faqs.create') }}" class="text-blue-500 hover:underline">Maak een nieuwe FAQ</a>
 
     @if (session('success'))
         <div class="text-green-500">{{ session('success') }}</div>
     @endif
 
-    <ul class="mt-6">
-        @foreach ($faqs as $faq)
-            <li class="mb-4">
-                <h2 class="text-xl font-semibold">{{ $faq->question }}</h2>
-                <p>{{ $faq->answer }}</p>
-                <p><strong>Category:</strong> {{ $faq->category->name }}</p>
-                <a href="{{ route('faqs.edit', $faq->id) }}" class="text-blue-500 hover:underline">Edit</a>
-                <form action="{{ route('faqs.destroy', $faq->id) }}" method="POST" class="inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="text-red-500 hover:underline">Delete</button>
-                </form>
-            </li>
-        @endforeach
-    </ul>
+    <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
+            @foreach ($faqs as $faq)
+                <x-faq-card :faq="$faq"/>
+            @endforeach
+
+            <div class="border-b border-gray-200 my-4"></div>
+    </div>
 </x-layout>

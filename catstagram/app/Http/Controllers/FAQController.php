@@ -11,7 +11,7 @@ class FAQController extends Controller
 {
     public function index()
     {
-        $faqs = Faq::with('category')->get();
+        $faqs = Faq::all();
         return view('faqs.index', compact('faqs'));
     }
 
