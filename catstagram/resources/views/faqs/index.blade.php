@@ -4,12 +4,16 @@
     <div class="flex justify-center mb-4">
         <h1 class="text-2xl font-bold text-center">FAQs</h1>
     </div>
-
+    
     <div class="flex justify-between items-center mb-4 mx-4">
+        @auth
+        @if(auth()->user()->is_admin)      
+
         <a href="{{ route('faqs.create') }}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300">
             <i class="fa-solid fa-plus mr-2"></i> Maak een nieuwe FAQ
         </a>
-        
+        @endif
+        @endauth
 
         <!-- Dropdown for Category Selection -->
         <form action="{{ route('faqs.index') }}" method="GET">
@@ -24,9 +28,16 @@
         </form>
     </div>
     <div class="flex justify-between items-center mb-4 mx-4">
+    @auth
+    @if(auth()->user()->is_admin)
     <a href="{{ route('categories.create') }}" class= "inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300">
         <i class="fa-solid fa-plus mr-2"></i> Maak een nieuwe categorie
     </a>
+    <a href="{{ route('categories.index') }}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300">
+        <i class="fa-solid fa-gear mr-2"></i> Beheer categorieën
+    </a>
+    @endif
+    @endauth
     </div>
     @if (session('success'))
         <div class="text-green-500">{{ session('success') }}</div>
