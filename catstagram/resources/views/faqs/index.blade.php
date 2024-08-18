@@ -9,6 +9,7 @@
         <a href="{{ route('faqs.create') }}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300">
             <i class="fa-solid fa-plus mr-2"></i> Maak een nieuwe FAQ
         </a>
+        
 
         <!-- Dropdown for Category Selection -->
         <form action="{{ route('faqs.index') }}" method="GET">
@@ -22,7 +23,11 @@
             </select>
         </form>
     </div>
-
+    <div class="flex justify-between items-center mb-4 mx-4">
+    <a href="{{ route('categories.create') }}" class= "inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300">
+        <i class="fa-solid fa-plus mr-2"></i> Maak een nieuwe categorie
+    </a>
+    </div>
     @if (session('success'))
         <div class="text-green-500">{{ session('success') }}</div>
     @endif

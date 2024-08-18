@@ -29,6 +29,8 @@
                 </div>
             </div>
         </x-card>
+        @auth
+        @if(auth()->user()->is_admin)
         <x-card class="mt-4 p-2 flex space-x-6">
             <a href="{{ route('news.edit', $news->id) }}">
             <i class="fa-solid fa-pencil"></i>
@@ -42,6 +44,7 @@
                 </button>
             </form>
         </x-card> 
+        @endif
+        @endauth
     </div>
-
 </x-layout>
