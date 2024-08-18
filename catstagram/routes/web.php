@@ -75,6 +75,7 @@ Route::resource('news', NewsController::class);
 Route::resource('faqs', FAQController::class);
 Route::resource('categories', CategoryController::class);
 
+
 // Route::get('admin', function () {
 //     return view('admin.index');
 // })->middleware(['auth', 'role:admin'])->name('admin');

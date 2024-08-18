@@ -2,9 +2,9 @@
 Backend Web - Laravel Project
 
 TODO:
-    - faq-card layout fixen, categorie in card krijgen, categories klikbaar maken, bij categorie kunnen verwijderen, categorie card maken.
+    - bij categorie kunnen verwijderen, categorie card maken.
 
-    - admin middleware
+    - admin middleware, create news route klikbaar maken voor admin!!
 
     - contact page, mail sturen naar admin (?)
 

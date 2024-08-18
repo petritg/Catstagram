@@ -9,10 +9,16 @@ use App\Http\Controllers\Controller;
 
 class FAQController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $faqs = Faq::all();
-        return view('faqs.index', compact('faqs'));
+        $categories = Category::all();
+
+    // Filter FAQs based on selected category
+    $faqs = Faq::when($request->category, function ($query, $categoryId) {
+        return $query->where('category_id', $categoryId);
+    })->get();
+
+    return view('faqs.index', compact('faqs', 'categories'));
     }
 
     public function create()
