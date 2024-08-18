@@ -8,6 +8,14 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        
+        $this->middleware('admin')->except(['index', 'show']);
+    }
+
+
     public function index()
     {
         $categories = Category::with('faqs')->get();

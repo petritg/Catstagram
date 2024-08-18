@@ -9,6 +9,13 @@ use App\Http\Controllers\Controller;
 
 class FAQController extends Controller
 {
+
+    public function __construct()
+    {
+        
+        $this->middleware('admin')->except(['index', 'show']);
+    }
+
     public function index(Request $request)
     {
         $categories = Category::all();
