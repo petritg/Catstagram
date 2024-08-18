@@ -93,7 +93,7 @@
         >
             <a href="/about" class="ml-2 hover:underline">About</a>
             <a href="{{ route('faqs.index') }}" class="ml-2 hover:underline">FAQ</a>
-            <a href="/" class="ml-2 hover:underline">Contact</a>
+            <a href="/contactpage" class="ml-2 hover:underline">Contact</a>
 
             <a
                 href="/posts/create"

@@ -75,7 +75,11 @@ Route::resource('news', NewsController::class);
 Route::resource('faqs', FAQController::class);
 Route::resource('categories', CategoryController::class);
 
+// Admin dashboard
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware('admin');
+
+// Get Contactform
+Route::get('/contactpage', [PostController::class, 'contactpage']);
 
 
 // Route::get('admin', function () {

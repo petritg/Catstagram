@@ -23,6 +23,11 @@ class PostController extends Controller
         return view('about');
     }
 
+    //Show Contactform
+    public function contactpage() {
+        return view('contact.contactpage');
+    }
+
     //Show single post
     public function show(Post $post) {
         return view('posts.show', [
@@ -71,7 +76,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post) {
 
         // Make sure logged in user is owner
-        if($post->user_id != auth()->id()) {
+        if($post->user_id != auth()->id() && !auth()->user()->is_admin == true) {
             abort(403, 'Unauthorized Action');
         }
 
@@ -101,7 +106,7 @@ class PostController extends Controller
     public function destroy(Post $post) {
 
         // Make sure logged in user is owner
-        if($post->user_id != auth()->id()) {
+        if($post->user_id != auth()->id()  && !auth()->user()->is_admin == true) {
             abort(403, 'Unauthorized Action');
         }
 
