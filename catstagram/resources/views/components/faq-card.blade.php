@@ -3,8 +3,8 @@
 
 <x-card>
     <div>
-        <h3 class="text-xl font-bold mb-2">{{ $faq->question }}</h3>
-        <p class="text-lg">{{ $faq->answer }}</p>
+        <h3 class="text-xl font-bold mb-2 break-words">{{ $faq->question }}</h3>
+        <p class="text-lg whitespace-normal break-words">{{ $faq->answer }}</p>
         <p class="text-sm text-gray-500 mb-2">Categorie: {{ $faq->category->name }}</p>
         <a href="{{ route('faqs.edit', $faq->id) }}" class="text-blue-500 hover:underline">Edit</a>
                 <form action="{{ route('faqs.destroy', $faq->id) }}" method="POST" class="inline">
