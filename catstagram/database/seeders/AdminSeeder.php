@@ -18,6 +18,7 @@ class AdminSeeder extends Seeder
             'email' => 'admin@ehb.be',
             'email_verified_at' => now(),
             'password' => 'Password!321',
+            'is_admin' => true,
             
         ])->assignRole('writer', 'admin');
         
