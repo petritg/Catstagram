@@ -75,6 +75,8 @@ Route::resource('news', NewsController::class);
 Route::resource('faqs', FAQController::class);
 Route::resource('categories', CategoryController::class);
 
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware('admin');
+
 
 // Route::get('admin', function () {
 //     return view('admin.index');

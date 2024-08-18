@@ -50,7 +50,7 @@
                     <!-- Conditional display for Admin Panel -->
                     @if(auth()->user()->is_admin)
                     <li>
-                        <a href="/admin" class="hover:text-laravel">
+                        <a href="/dashboard" class="hover:text-laravel">
                             <i class="fa-solid fa-gear"></i> Admin Panel
                         </a>
                     </li>
