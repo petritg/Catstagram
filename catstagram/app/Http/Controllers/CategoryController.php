@@ -33,7 +33,9 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        Category::create($request->all());
+        Category::create([
+            'name' => $request->input('name'),
+        ]);
 
         return redirect()->route('categories.index')->with('success', 'Category created successfully');
     }
