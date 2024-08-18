@@ -47,12 +47,21 @@
                             <a href="/users/showprofile">Welkom {{auth()->user()->name}}</a>
                         </span>
                     </li>
+                    <!-- Conditional display for Admin Panel -->
+                    @if(auth()->user()->is_admin)
                     <li>
-                        <a href="/posts/manage" class="hover:text-laravel"
-                            ><i class="fa-solid fa-gear"></i>
-                            Beheer Posts</a
-                        >
+                        <a href="/admin" class="hover:text-laravel">
+                            <i class="fa-solid fa-gear"></i> Admin Panel
+                        </a>
                     </li>
+                    @else
+                    <li>
+                        <a href="/posts/manage" class="hover:text-laravel">
+                            <i class="fa-solid fa-gear"></i> Beheer Posts
+                        </a>
+                    </li>
+                    @endif
+
                     <li>
                         <form class="inline" method="POST" action="/logout">
                         @csrf
