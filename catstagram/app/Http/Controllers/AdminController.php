@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.dashboard'); // Adjust view path as needed
+        $posts = Post::with('user')->get();
+        return view('admin.dashboard', compact('posts')); // Adjust view path as needed
     }
 }

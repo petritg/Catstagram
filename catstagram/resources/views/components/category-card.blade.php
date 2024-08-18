@@ -11,7 +11,6 @@
                     <button type="submit" class="text-red-500 hover:underline">
                         <i class="fa-solid fa-trash"></i>Delete</button>
                 </form>
-
     </div>
 
 </x-card>

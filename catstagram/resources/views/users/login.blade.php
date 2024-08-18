@@ -57,7 +57,7 @@
                         <div class="mt-8">
                             <p>
                                 Nog geen account?
-                                <a href="/login" class="text-laravel"
+                                <a href="/register" class="text-laravel"
                                     >Registreer</a
                                 >
                             </p>
