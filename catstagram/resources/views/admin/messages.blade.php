@@ -4,47 +4,43 @@
             <h1 class="text-3xl text-center font-bold my-6 uppercase">
                 Berichten
             </h1>
-            <p>Deze berichten komen van gebruikers die het contactformulier hebben ingevuld</p>
+            <h2 class="text-center">Deze berichten komen van gebruikers die het contactformulier hebben ingevuld</h2>
+            <br>
         </header>  
         <table class="w-full table-auto rounded-sm">
-            <thead>
-                <tr class="bg-gray-100 border-b">
-                    <th class="px-4 py-2">Onderwerp</th>
-                    <th class="px-4 py-2">Bericht</th>
-                    <th class="px-4 py-2">Email</th>
-                    <th class="px-4 py-2">Actie</th>
-                </tr>
-            </thead>
             <tbody>
                 @unless ($messages->isEmpty())
-                    @foreach ($messages as $message)
-                        <tr class="border-gray-300">
-                            <td class="px-4 py-4 border-t border-b border-gray-300 text-lg">
-                                {{$message->subject}}
-                            </td>
-                            <td class="px-4 py-4 border-t border-b border-gray-300 text-lg">
-                                {{$message->message}}
-                            </td>
-                            <td class="px-4 py-4 border-t border-b border-gray-300 text-lg">
-                                {{$message->email}}
-                            </td>
-                            <td class="px-4 py-4 border-t border-b border-gray-300 text-lg">
-                                <form method="POST" action="{{ route('admin.messages.destroy', $message->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="text-red-500 hover:text-red-700">
-                                        <i class="fa-solid fa-trash"></i> Verwijder
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
+                @foreach ($messages as $message)
+                <tr class="border-gray-300">
+                    <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
+                        <div class="flex flex-col space-y-2 max-w-lg">
+                            <div class="font-bold">Onderwerp:</div>
+                            <div class="text-gray-800">{{ $message->subject }}</div>
+                            
+                            <div class="font-bold">Bericht:</div>
+                            <div class="text-gray-800 break-words">{{ $message->message }}</div>
+                            
+                            <div class="font-bold">Email:</div>
+                            <div class="text-gray-800">{{ $message->email }}</div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
+                        <form method="POST" action="{{ route('admin.messages.destroy', $message->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="text-red-500">
+                                <i class="fa-solid fa-trash"></i> Verwijder
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
                 @else
-                    <tr>
-                        <td colspan="4" class="px-4 py-8 border-t border-b border-gray-300 text-lg text-center">
-                            Geen berichten gevonden.
-                        </td>
-                    </tr>
+                <tr class="border-gray-300">
+                    <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
+                        <p class="text-center">Geen berichten gevonden</p>
+                    </td>
+                </tr>
                 @endunless
             </tbody>
         </table>

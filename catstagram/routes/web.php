@@ -89,7 +89,7 @@ Route::get('/contactpage', [PostController::class, 'contactpage']);
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Delete message
-Route::delete('/admin/messages/{message}', [MessageController::class, 'destroy'])->middleware('admin');
+Route::delete('/admin/messages/{message}', [MessageController::class, 'destroy'])->name('admin.messages.destroy')->middleware('admin');
 
 
 // Route::get('admin', function () {
