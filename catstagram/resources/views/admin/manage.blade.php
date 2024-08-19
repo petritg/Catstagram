@@ -1,5 +1,8 @@
 <x-layout>
     <x-card>
+        <h1 class="text-3xl text-center font-bold my-6 uppercase">
+            Beheer posts
+        </h1>
         <table class="w-full table-auto rounded-sm">
             <tbody>
                 @unless ($posts->isEmpty())
