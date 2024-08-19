@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
@@ -78,13 +79,17 @@ Route::resource('categories', CategoryController::class);
 
 // Admin routes
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware('admin');
-Route::get('dashboard/manage', [AdminController::class, 'managePosts'])->middleware('admin');
+Route::get('/dashboard/manage', [AdminController::class, 'managePosts'])->middleware('admin');
+Route::get('/dashboard/messages', [AdminController::class, 'showMessages'])->middleware('admin')->name('admin.messages');
 
 // Get Contactform
 Route::get('/contactpage', [PostController::class, 'contactpage']);
 
 // Post Contactform
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+// Delete message
+Route::delete('/admin/messages/{message}', [MessageController::class, 'destroy'])->middleware('admin');
 
 
 // Route::get('admin', function () {
