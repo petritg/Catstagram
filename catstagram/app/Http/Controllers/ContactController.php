@@ -11,11 +11,11 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         // Validate the request
-        $request->validate([
-            'email' => 'required|email|max:255',
-            'subject' => 'required|string|max:255',
-            'message' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'email' => 'required|email|max:255',
+        //     'subject' => 'required|string|max:255',
+        //     'message' => 'required|string',
+        // ]);
 
         // Create a new message in the database
         Message::create([

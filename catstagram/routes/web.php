@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\FAQController;
-use App\Http\Controllers\NewsController;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FAQController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +82,9 @@ Route::get('dashboard/manage', [AdminController::class, 'managePosts'])->middlew
 
 // Get Contactform
 Route::get('/contactpage', [PostController::class, 'contactpage']);
+
+// Post Contactform
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 
 // Route::get('admin', function () {
