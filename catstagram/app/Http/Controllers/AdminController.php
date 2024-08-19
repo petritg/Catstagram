@@ -10,7 +10,10 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
+        return view('admin.dashboard'); 
+    }
+    public function managePosts(){
         $posts = Post::with('user')->get();
-        return view('admin.dashboard', compact('posts')); // Adjust view path as needed
+        return view('admin.manage', compact('posts'));
     }
 }
